@@ -3,17 +3,19 @@
 <p>
   <strong>Comment:</strong>
   <%= @comment.comment %>
+  <%= @comment.like %>
 </p>
 
 <p>
   <strong>Book:</strong>
-  <%= @comment.book %>
+  <%= @book.title %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @comment.user %>
+  <%= @user.name %>
 </p>
 
-<%#= link_to 'Edit', edit_comment_path(@comment.id) %> |
+<%= link_to 'like', author_book_comment_path(@book.author.id, @book.id, @comment.id, :like => 'like') %>
+<%#= link_to 'Edit', edit_comment_path(@comment.id) %>
 <%#= link_to 'Back', comments_path %>

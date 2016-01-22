@@ -11,8 +11,16 @@ class CommentsController < ApplicationController
   # GET /comments/1
   # GET /comments/1.json
   def show
+
+    @user = User.find(1)
     @book = Book.find(params[:book_id])
-    @comments = @book.comments
+    @comment = @book.comments.find(params[:id])
+
+    if params[:like] == 'like'
+      like
+      redirect_to author_book_comment_path(@book.author.id, @book.id, @comment.id, :like => nil)
+    end
+
   end
 
   # GET /comments/new
@@ -69,6 +77,21 @@ class CommentsController < ApplicationController
       format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+
+
+  def like
+    @book = Book.find(params[:book_id])
+    @comment = @book.comments.find(params[:id])
+    @like = @comment.like
+    @like = @like + 1
+    @comment.update(like: @like)
+
+  end
+
+  def dislike
+
   end
 
   private
