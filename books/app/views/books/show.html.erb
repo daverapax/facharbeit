@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @book.title %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @authors.name %>
+</p>
+
+<%= link_to 'Kommentare', author_book_comments_path(@authors.id, params[:id]), :class => 'button' %>
+<%= link_to 'Edit', edit_author_book_path(@authors.id, params[:id]), :class => 'button' %>
+<%= link_to 'Back', author_books_path(@authors.id), :class => 'button' %>

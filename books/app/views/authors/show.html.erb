@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @author.name %>
+</p>
+
+
+<p>
+  <strong>Biographie:</strong>
+  <p><%= @author.bio %></p>
+</p>
+<div class="button-group">
+<%= link_to 'Edit', edit_author_path(@author), :class => 'button' %>
+<%= link_to 'Back', authors_path, :class => 'button' %>
+<%= link_to "Bücher", author_books_path(@author.id), :class => 'button' %>
+</div>

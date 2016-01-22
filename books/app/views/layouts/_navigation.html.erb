@@ -1,0 +1,30 @@
+<div class="top-bar">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text">Büchersamlung</li>
+      <li class="has-submenu">
+        <%= link_to "Autoren", root_url %>
+        <ul class="submenu menu vertical" data-submenu>
+          <li><%= link_to "Neuer Autor", new_author_path %> </li>
+        </ul>
+      </li>
+      <li class="has-submenu">
+        <%= link_to "Alle Bücher", allbooks_path %>
+        <ul class="submenu menu vertical" data-submenu>
+
+        </ul>
+      </li>
+      </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <% if current_user %>
+        <li><%= link_to "Ausloggen", logout_path %></li>
+        <li><%= link_to current_user.name, edit_user_path(current_user.id) %></li>
+      <% else %>
+        <li><%= link_to "User anlegen", new_user_path %></li>
+        <li><%= link_to "Einloggen", new_session_path %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

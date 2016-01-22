@@ -1,0 +1,26 @@
+<%= form_tag(sessions_path) do %>
+  <fieldset>
+    <legend>Anmelden</legend>
+      <div class="row">
+        <div class="medium-2 columns">
+            <%= label_tag :email %>
+        </div>
+        <div class="medium-10 cloumns">
+          <%= text_field_tag :email %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="medium-2 columns">
+            <%= label_tag :password %>
+        </div>
+        <div class="medium-10 cloumns">
+          <%= password_field_tag :password %>
+        </div>
+      </div>
+
+      <%= submit_tag "Anmelden" %>
+
+  </fieldset>
+
+<% end %>

@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Liste der Autoren</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Vorname</th>
+      <th>Nachname</th>
+      <th>Optionen</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @authors.each do |author| %>
+      <tr>
+        <td><%= author.vorname.titlecase %></td>
+        <td><%= author.nachname.titlecase %></td>
+        <td>
+          <div class="small button-group">
+            <%= link_to 'Show', author, :class => 'button' %>
+            <%= link_to 'Edit', edit_author_path(author), :class => 'button' %>
+            <%= link_to 'Destroy', author, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'alert button' %>
+            <%= link_to "Bücher", author_books_path(author.id), :class => 'button' %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

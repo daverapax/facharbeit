@@ -1,0 +1,30 @@
+<h3>Alle Bücher</h3>
+
+
+<table>
+  <tr>
+    <th>Autor</th>
+    <th>Buch</th>
+  </tr>
+    <% @authors.each do | auth  | %>
+      <tr>
+        <td><%= auth.name %></td>
+
+          <td>
+            <table>
+                <% auth.books.each do | book | %>
+                  <tr>
+                    <td>
+                      <%= book.title %>
+                    </td>
+                  </tr>
+                <% end %>
+              </table>
+          </td>
+
+
+      </tr>
+    <% end %>
+
+
+</table>
