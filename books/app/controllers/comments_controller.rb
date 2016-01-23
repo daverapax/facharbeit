@@ -16,9 +16,13 @@ class CommentsController < ApplicationController
     @book = Book.find(params[:book_id])
     @comment = @book.comments.find(params[:id])
 
-    if params[:like] == 'like'
-      like
-      redirect_to author_book_comment_path(@book.author.id, @book.id, @comment.id, :like => nil)
+    @like = params[:like]
+    if @like == 'like'
+        like
+        redirect_to author_book_comment_path(@book.author.id, @book.id, @comment.id, :like => nil)
+      elsif @like == 'dislike'
+        dislike
+        redirect_to author_book_comment_path(@book.author.id, @book.id, @comment.id, :like => nil)
     end
 
   end
@@ -91,7 +95,11 @@ class CommentsController < ApplicationController
   end
 
   def dislike
-
+    @book = Book.find(params[:book_id])
+    @comment = @book.comments.find(params[:id])
+    @like = @comment.dislike
+    @like = @like + 1
+    @comment.update(dislike: @like)
   end
 
   private
