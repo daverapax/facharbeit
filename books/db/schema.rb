@@ -36,10 +36,10 @@ ActiveRecord::Schema.define(version: 20160122104817) do
     t.text     "comment"
     t.integer  "book_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "like"
-    t.integer  "dislike"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "like",       default: 0
+    t.integer  "dislike",    default: 0
   end
 
   add_index "comments", ["book_id"], name: "index_comments_on_book_id"

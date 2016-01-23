@@ -11,8 +11,6 @@ class CommentsController < ApplicationController
   # GET /comments/1
   # GET /comments/1.json
   def show
-
-    @user = User.find(1)
     @book = Book.find(params[:book_id])
     @comment = @book.comments.find(params[:id])
 
