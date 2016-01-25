@@ -4,8 +4,13 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
+
     @book = Book.find(params[:book_id])
     @comments = @book.comments
+
+    if current_user
+      @user = @currrent_user
+    end
   end
 
   # GET /comments/1
@@ -58,7 +63,6 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1.json
   def update
     @book = Book.find(params[:book_id])
-    #raise params.to_yaml
     @comment = @book.comments.find(params[:id])
     respond_to do |format|
       if @comment.update(comment_params)
@@ -74,9 +78,15 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
+    @book = Book.find(params[:book_id])
+    @comment = @book.comments.find(params[:id])
+    if current_user
+      @user =  @current_user
+    end
+    #@comment = @user.comments.find(params[:id])
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to author_book_comments_url(@book.author.id, @book.id), notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
