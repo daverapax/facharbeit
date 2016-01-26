@@ -32,20 +32,19 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @comment = Comment.new
+    @comment = Book.find(params[:book_id])
   end
 
   # GET /comments/1/edit
   def edit
-
     @book = Book.find(params[:book_id])
-    #raise params.to_yaml
     @comment = @book.comments.find(params[:id])
   end
 
   # POST /comments
   # POST /comments.json
   def create
+    @book = Book.find(params[:book_id])
     @comment = Comment.new(comment_params)
 
     respond_to do |format|
