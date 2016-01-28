@@ -16,5 +16,7 @@
 
  */
 
-td { font-size: 20px;}
+td { padding: 5em;
+   font-size: 20px;
+      }
 th { text-align: center;}
