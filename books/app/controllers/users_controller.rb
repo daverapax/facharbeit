@@ -71,7 +71,7 @@ class UsersController < ApplicationController
 
     def require_correct_user
       @user = User.find(params[:id])
-      unless @user == current_user
+      unless @user == current_user || current_user.admin
         redirect_to root_url, notice: "Gesichtskontrolle failed!"
       end
     end
@@ -81,6 +81,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :admin)
     end
 end

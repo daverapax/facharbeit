@@ -19,6 +19,14 @@
     <%= f.label :email %><br>
     <%= f.text_field :email %>
   </div>
+
+  <div class="field">
+    <% if @current_user.admin? %>
+      <%= f.label :admin %><br>
+      <%= f.check_box :admin %>
+    <% end %>
+  </div>
+
   <div class="field">
     <%= f.label :password %><br>
     <%= f.password_field :password %>

@@ -79,11 +79,11 @@ class CommentsController < ApplicationController
   def destroy
     @book = Book.find(params[:book_id])
     @comment = @book.comments.find(params[:id])
-    if current_user
-      @user =  @current_user
+    if current_user == @comment.user_id
+      @comment.destroy
     end
     #@comment = @user.comments.find(params[:id])
-    @comment.destroy
+
     respond_to do |format|
       format.html { redirect_to author_book_comments_url(@book.author.id, @book.id), notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }

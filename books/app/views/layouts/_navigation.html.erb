@@ -10,9 +10,11 @@
       </li>
       <li class="has-submenu">
         <%= link_to "Alle Bücher", allbooks_path %>
-        <ul class="submenu menu vertical" data-submenu>
-
-        </ul>
+      </li>
+      <li class="has-submenu">
+        <% if current_user && current_user.admin? %>
+          <%= link_to "Alle User", users_path %>
+        <% end %>
       </li>
       </ul>
   </div>

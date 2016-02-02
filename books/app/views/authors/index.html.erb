@@ -2,7 +2,7 @@
 
 <h1>Liste der Autoren</h1>
 
-<table>
+<table width="100%">
   <thead>
     <tr>
       <th>Vorname</th>
@@ -20,8 +20,8 @@
           <div class="small button-group">
             <%= link_to 'Show', author, :class => 'button' %>
             <%= link_to 'Edit', edit_author_path(author), :class => 'button' %>
-            <%= link_to 'Destroy', author, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'alert button' %>
             <%= link_to "Bücher", author_books_path(author.id), :class => 'button' %>
+            <%= link_to 'Destroy', author, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'alert button' if current_user && current_user.admin? %>
           </div>
         </td>
       </tr>
