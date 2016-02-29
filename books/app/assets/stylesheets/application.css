@@ -20,3 +20,9 @@ td { padding: 5em;
    font-size: 20px;
       }
 th { text-align: center;}
+
+.icon-red {
+  font-size: 2.5em;
+  color: red;
+  margin-left: 0.5em;
+}
