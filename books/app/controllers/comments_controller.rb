@@ -1,12 +1,18 @@
 class CommentsController < ApplicationController
   #before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :require_signin
 
   # GET /comments
   # GET /comments.json
   def index
 
     @book = Book.find(params[:book_id])
-    @comments = @book.comments
+    if @book.comments
+      @comments = @book.comments
+    else
+      redirect_to new_author_book_comment_path
+    end
+
 
     if current_user
       @user = @currrent_user
@@ -32,7 +38,8 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @comment = Book.find(params[:book_id])
+    @book = Book.find(params[:book_id])
+    @comment = @book.comments.new
   end
 
   # GET /comments/1/edit
@@ -49,7 +56,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        format.html { redirect_to author_book_comments_path, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }

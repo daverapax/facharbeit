@@ -21,7 +21,7 @@
   </div>
 
   <div class="field">
-    <% if @current_user.admin? %>
+    <% if !@current_user == nil && @current_user.admin?   %>
       <%= f.label :admin %><br>
       <%= f.check_box :admin %>
     <% end %>

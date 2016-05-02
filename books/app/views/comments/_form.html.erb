@@ -21,7 +21,7 @@
   </div>
   <div class="field" type="hidden">
     <%#= f.label :user_id, :type => 'hidden' %><br>
-    <%= f.text_field :user_id, :type => 'hidden' %>
+    <%= f.text_field :user_id, value: @current_user.id, :type => 'hidden' %>
   </div>
   <div class="actions">
     <%= f.submit %>
