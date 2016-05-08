@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       redirect_to authors_url
     else
       render :new
-      flash[:notice] = "Fehler"
+      flash[:notice] = "Passwort oder Emailadresse falsch"
     end
   end
 

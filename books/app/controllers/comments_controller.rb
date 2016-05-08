@@ -105,7 +105,6 @@ class CommentsController < ApplicationController
     @like = @comment.like
     @like = @like + 1
     @comment.update(like: @like)
-
   end
 
   def dislike

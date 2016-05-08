@@ -6,10 +6,11 @@ Rails.application.routes.draw do
   get 'signup' => 'users#new'
   #get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'
-  resources :searches
+
   resources :users do
     resources :comments
   end
+  
   resources :sessions
   get 'allbooks' => 'authors#allbooks'
   resources :authors do
